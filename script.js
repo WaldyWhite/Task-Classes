@@ -39,10 +39,8 @@ lampe.deviceOff(); */
 
 
 
-class Device {
+class DeviceOnOff {
     constructor () {
-        this.name = 'Device'
-        this.type = 'Elektro';
         }
 
     deviceOn (totalTime){ // total usage time
@@ -54,7 +52,7 @@ class Device {
         }
 }
 
-class Iron extends Device{
+class Iron extends DeviceOnOff{
     constructor(name){
         super(name)
         this.name = 'Iron - Super Steamer'
@@ -63,7 +61,7 @@ class Iron extends Device{
     }
 }
 
-class Lampe extends Device{
+class Lampe extends DeviceOnOff{
     constructor(name){
         super(name)
         this.name = 'Lampe - Yellow Ligh',
@@ -74,7 +72,7 @@ class Lampe extends Device{
 
 
 const iron = new Iron ()
-console.log(iron.deviceOn(0.5))
+console.log(iron.deviceOn(1.5))
 
 const lampe = new Lampe();
 console.log(lampe.deviceOff())

@@ -84,6 +84,10 @@ const lampe = new Device('Lampe', 'Yellow', 60);
 lampe.powerSwitch(2);
 console.log(lampe.deviceOn(5),lampe.cpu);
 
+<<<<<<< HEAD
 const pc = new Computer  ('Dell', 'silber', 90, 2500);
+=======
+const pc = new Device ('Dell', 'silber', 90, 2500);
+>>>>>>> e934fd954fad257edd32e4f4676a274b95cee97b
 console.log(pc.deviceOn(5),pc.cpu)
 

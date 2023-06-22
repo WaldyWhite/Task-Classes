@@ -20,7 +20,7 @@ function FlatIron (){
 
 function Lampe (){
     this.name = 'Lampe - Yellow Light'
-    this.color = 'yellow',
+    this.light = 'yellow',
     this.power = 0.06 // kW
 }
 
@@ -67,14 +67,14 @@ class Lampe extends Device{
     constructor(name){
         super(name)
         this.name = 'Lampe - Yellow Ligh',
-        this.color = 'blue',
+        this.light = 'yellow',
         this.power = 60 // W
     }
 }
 
 
 const iron = new Iron ()
-console.log(iron.deviceOn(10))
+console.log(iron.deviceOn(0.5))
 
 const lampe = new Lampe();
 console.log(lampe.deviceOff())

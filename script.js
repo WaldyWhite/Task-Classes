@@ -44,7 +44,7 @@ class DeviceOnOff {
     }
 
     deviceOn (totalTime){ // total usage time
-        return `${this.name} is On, Power consumption ${totalTime * this.power} W/h`;
+        return (totalTime * this.power) < 1000 ? `${this.name} is On, Power consumption ${totalTime * this.power} W/h`: `${this.name} is On, Power consumption ${totalTime * this.power/ 1000} kW/h`;
         }
     
     deviceOff () {
@@ -56,11 +56,11 @@ class Device extends DeviceOnOff{
     constructor(name, color, powerMax, cpu){
         super(name, color)
         this.power = powerMax // W
-        this.cpu = cpu
+        this.cpu = `${cpu} MHz`
     }
     powerSwitch (toggle){
         if(toggle === 1) {
-            this.power = `${(this.power / 3).toFixed(2)} W/h`;// W
+            this.power = (this.power / 3).toFixed(2);// W
         } 
         else if (toggle === 2) {
             this.power = (this.power / 2).toFixed(2);// W
@@ -76,7 +76,7 @@ console.log(iron.deviceOn(10));
 
 const lampe = new Device('Lampe', 'Yellow', 60);
 lampe.powerSwitch();
-console.log(lampe.deviceOff());
+console.log(lampe.deviceOn(5));
 
 const pc = new Device ('Dell', 'silber', 90, 2500);
 console.log(pc.cpu)

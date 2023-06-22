@@ -62,8 +62,8 @@ class Iron extends DeviceOnOff{
 }
 
 class Lampe extends DeviceOnOff{
-    constructor(name){
-        super(name)
+    constructor(){
+        super()
         this.name = 'Lampe - Yellow Ligh',
         this.light = 'yellow',
         this.power = 60 // W
@@ -72,7 +72,7 @@ class Lampe extends DeviceOnOff{
 
 
 const iron = new Iron ()
-console.log(iron.deviceOn(1.5))
+console.log(iron.deviceOn(0.5))
 
 const lampe = new Lampe();
 console.log(lampe.deviceOff())

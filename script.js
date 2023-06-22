@@ -1,34 +1,34 @@
 // Implementation on prototypes
 
 /* function ElectroDevice () {
-    this.type = 'elektro'
+    this.type = 'elektro';
 }
 
 ElectroDevice.prototype.deviceOn = function(totalTime){ // total usage time
-    console.log(`${this.name} is On, Power consumption ${totalTime *this.power} kW/h`)
+    console.log(`${this.name} is On, Power consumption ${totalTime *this.power} kW/h`);
 }
 
 ElectroDevice.prototype.deviceOff = function() {
-    console.log(`${this.name} is Off, Power consumption 0 kW/h`)
+    console.log(`${this.name} is Off, Power consumption 0 kW/h`);
 }
 
 function FlatIron (){
-    this.name = 'Flatiron - Super Steamer'
-    this.color = 'blue',
-    this.power = 3 // kW
+    this.name = 'Flatiron - Super Steamer';
+    this.color = 'blue';
+    this.power = 3; // kW
 }
 
 function Lampe (){
-    this.name = 'Lampe - Yellow Light'
-    this.light = 'yellow',
-    this.power = 0.06 // kW
+    this.name = 'Lampe - Yellow Light';
+    this.light = 'yellow';
+    this.power = 0.06; // kW
 }
 
 FlatIron.prototype = new ElectroDevice();
 Lampe.prototype = new ElectroDevice();
 
 const flatIron = new FlatIron();
-flatIron.deviceOn(0.5);
+flatIron.deviceOn(2.5);
 
 const lampe = new Lampe();
 lampe.deviceOff(); */

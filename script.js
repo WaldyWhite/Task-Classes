@@ -37,8 +37,6 @@ lampe.deviceOff(); */
 
 // Implementation on Classes
 
-
-
 class DeviceOnOff {
     constructor () {
         }
@@ -59,6 +57,15 @@ class Iron extends DeviceOnOff{
         this.color = 'blue',
         this.power = 3000 // W
     }
+    powerSwitch (toggle){
+        if(toggle === 1) {
+            this.power = 1000;// W
+        } 
+        else if (toggle === 2) {
+            this.power = 2000;// W
+        }
+    }
+
 }
 
 class Lampe extends DeviceOnOff{
@@ -68,12 +75,22 @@ class Lampe extends DeviceOnOff{
         this.light = 'yellow',
         this.power = 60 // W
     }
+    powerSwitch (toggle){
+        if(toggle === 1) {
+            this.power = 20;
+        } 
+        else if (toggle === 2) {
+            this.power = 40;
+        }
+    }
 }
 
 
 const iron = new Iron ();
+iron.powerSwitch();
 console.log(iron.deviceOn(0.5));
 
 const lampe = new Lampe();
+lampe.powerSwitch();
 console.log(lampe.deviceOff());
 

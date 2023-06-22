@@ -53,8 +53,8 @@ class DeviceOnOff {
 }
 
 class Iron extends DeviceOnOff{
-    constructor(name){
-        super(name)
+    constructor(){
+        super()
         this.name = 'Iron - Super Steamer'
         this.color = 'blue',
         this.power = 3000 // W

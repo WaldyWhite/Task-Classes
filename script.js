@@ -38,8 +38,10 @@ lampe.deviceOff(); */
 // Implementation on Classes
 
 class DeviceOnOff {
-    constructor () {
-        }
+    constructor (name, color) {
+        this.name =  name
+        this.color = color
+    }
 
     deviceOn (totalTime){ // total usage time
         return `${this.name} is On, Power consumption ${totalTime * this.power} W/h`;
@@ -50,47 +52,32 @@ class DeviceOnOff {
         }
 }
 
-class Iron extends DeviceOnOff{
-    constructor(){
-        super(),
-        this.name = 'Iron - Super Steamer',
-        this.color = 'blue',
-        this.power = 3000 // W
+class Device extends DeviceOnOff{
+    constructor(name, color, powerMax, cpu){
+        super(name, color)
+        this.power = powerMax // W
+        this.cpu = cpu
     }
     powerSwitch (toggle){
         if(toggle === 1) {
-            this.power = 1000;// W
+            this.power = `${(this.power / 3).toFixed(2)} W/h`;// W
         } 
         else if (toggle === 2) {
-            this.power = 2000;// W
+            this.power = (this.power / 2).toFixed(2);// W
         }
     }
 
 }
 
-class Lampe extends DeviceOnOff{
-    constructor(){
-        super(),
-        this.name = 'Lampe - Yellow Ligh',
-        this.light = 'yellow',
-        this.power = 60 // W
-    }
-    powerSwitch (toggle){
-        if(toggle === 1) {
-            this.power = 20;
-        } 
-        else if (toggle === 2) {
-            this.power = 40;
-        }
-    }
-}
 
+const iron = new Device ('Iron', 'green', 3000);
+iron.powerSwitch(1);
+console.log(iron.deviceOn(10));
 
-const iron = new Iron ();
-iron.powerSwitch();
-console.log(iron.deviceOn(0.5));
-
-const lampe = new Lampe();
+const lampe = new Device('Lampe', 'Yellow', 60);
 lampe.powerSwitch();
 console.log(lampe.deviceOff());
+
+const pc = new Device ('Dell', 'silber', 90, 2500);
+console.log(pc.cpu)
 

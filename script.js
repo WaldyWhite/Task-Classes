@@ -72,7 +72,7 @@ class Device extends DeviceOnOff{
 
 const iron = new Device ('Iron', 'green', 3000);
 iron.powerSwitch(1);
-console.log(iron.deviceOn(10));
+console.log(iron.deviceOff());
 
 const lampe = new Device('Lampe', 'Yellow', 60);
 lampe.powerSwitch();

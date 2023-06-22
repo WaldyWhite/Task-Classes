@@ -79,5 +79,5 @@ lampe.powerSwitch();
 console.log(lampe.deviceOn(5));
 
 const pc = new Device ('Dell', 'silber', 90, 2500);
-console.log(pc.cpu)
+console.log(pc.deviceOn(5),pc.cpu)
 

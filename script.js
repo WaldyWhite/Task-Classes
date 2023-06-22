@@ -52,32 +52,38 @@ class DeviceOnOff {
         }
 }
 
-class Device extends DeviceOnOff{
-    constructor(name, color, powerMax, cpu){
+class Device extends DeviceOnOff {
+    constructor(name, color, powerMax){
         super(name, color)
-        this.power = powerMax // W
-        this.cpu = `${cpu} MHz`
+        this.power = powerMax 
     }
+
     powerSwitch (toggle){
         if(toggle === 1) {
-            this.power = (this.power / 3).toFixed(2);// W
+            this.power = (this.power / 3).toFixed(2); // W
         } 
         else if (toggle === 2) {
-            this.power = (this.power / 2).toFixed(2);// W
+            this.power = (this.power / 2).toFixed(2); // W
         }
     }
 
 }
 
+class Computer extends Device {
+    constructor (name, color, powerMax, cpu){
+        super(name, color, powerMax)
+        this.cpu = `${cpu} MHz`
+    }
+}
 
 const iron = new Device ('Iron', 'green', 3000);
 iron.powerSwitch(1);
-console.log(iron.deviceOn(10));
+console.log(iron.deviceOff());
 
 const lampe = new Device('Lampe', 'Yellow', 60);
-lampe.powerSwitch();
-console.log(lampe.deviceOn(5));
+lampe.powerSwitch(2);
+console.log(lampe.deviceOn(5),lampe.cpu);
 
-const pc = new Device ('Dell', 'silber', 90, 2500);
-console.log(pc.cpu)
+const pc = new Computer  ('Dell', 'silber', 90, 2500);
+console.log(pc.deviceOn(5),pc.cpu)
 

@@ -10,4 +10,4 @@
 
 ---
 
-Для проверки работы  Implementation on Classes раскомментируйте и закомментируйте Implementation on prototypes.
+Для проверки работы  Implementation on Classes(Задание 5.) раскомментируйте и закомментируйте Implementation on prototypes (Задание 4.).

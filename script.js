@@ -1,7 +1,65 @@
+/* Задание 1.
+
+Напишите функцию, которая принимает в качестве аргумента объект и выводит в консоль все ключи и значения только собственных свойств.
+Данная функция не должна возвращать значение.*/
+
+const person = {
+    name:'Ivan',
+    surname: 'Ivanov',
+    city: 'Piter',
+}
+
+const student = Object.create(person);
+student.age = 25;
+student.city = 'Omsk';
+
+
+function objKeys (obj) {
+    for (let key in obj) {
+        if(obj.hasOwnProperty(key)) {
+            console.log(`${key}:'${obj[key]}'`);
+        }
+    }
+}
+
+objKeys (student)
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+
+
+/* Задание 2.
+
+Напишите функцию, которая принимает в качестве аргументов строку и объект, а затем проверяет, есть ли у переданного объекта свойство с данным именем. 
+Функция должна возвращать true или false.*/
+
+function isInObj (str, obj) {
+   return obj.hasOwnProperty(str) ? true: false;
+}
+
+console.log(isInObj ('city', student))
+
+/*-------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* Задание 3.
+
+Напишите функцию, которая создает пустой объект, но без прототипа.*/
+
+
+function ojNoProto () {
+    const emptyObject = Object.create(null);
+    return emptyObject;
+}
+
+console.log(ojNoProto())
+
+/*---------------------------------------------------------------------------------------------------------------------------------------*/
+
+//Задание 4. 
+
 // Implementation on prototypes
 
 // Родительская функция с методами, которая включают/выключают прибор из розетки.
- function DeviceOnOff (name, color) {
+      function DeviceOnOff (name, color) {
     this.name = name;
     this.color = color;
     this.type = 'ElectroDevice';
@@ -37,12 +95,12 @@ FlatIron.prototype.powerSwitch = function (toggle){
         this.power = (this.power / 2).toFixed(2); 
     }
 }
-
+ 
 // Делегирующая связь Prototype
-Laptop.prototype = new FlatIron ();
+    Laptop.prototype = new FlatIron ();
 
 // Функция прибор Laptop
-function Laptop (name, color, power, cpu){
+    function Laptop (name, color, power, cpu){
     this.name = name;
     this.color = color;
     this.power = power;
@@ -51,7 +109,7 @@ function Laptop (name, color, power, cpu){
 }
 
 // Собственныей метод
-Laptop.prototype.laptopStart = function () {
+    Laptop.prototype.laptopStart = function () {
     if(this.start) {
         console.log ('Laptop started')
     }
@@ -78,10 +136,12 @@ console.log('----');
 lampe.powerSwitch(1);
 lampe.deviceOn(1);
 console.log(lampe.voltage);
-
+ 
 
 
 /*----------------------------------------------------------------------------------------*/
+
+//Задание 5. 
 
 // Implementation on Classes
 

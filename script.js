@@ -1,43 +1,91 @@
 // Implementation on prototypes
 
-/* function ElectroDevice () {
-    this.type = 'elektro';
+// Родительская функция с методами, которая включают/выключают прибор из розетки.
+ function DeviceOnOff (name, color) {
+    this.name = name;
+    this.color = color;
+    this.type = 'ElectroDevice';
 }
 
-ElectroDevice.prototype.deviceOn = function(totalTime){ // total usage time
-    console.log(`${this.name} is On, Power consumption ${totalTime *this.power} kW/h`);
+DeviceOnOff.prototype.deviceOn = function(totalTime){ // total usage time
+    (totalTime * this.power) < 1000 ? console.log(`${this.name} is On, Power consumption ${totalTime * this.power} W/h`): console.log(`${this.name} is On, Power consumption ${totalTime * this.power/ 1000} kW/h`);
+    this.start = true;
 }
 
-ElectroDevice.prototype.deviceOff = function() {
+DeviceOnOff.prototype.deviceOff = function() {
     console.log(`${this.name} is Off, Power consumption 0 kW/h`);
 }
 
-function FlatIron (){
-    this.name = 'Flatiron - Super Steamer';
-    this.color = 'blue';
-    this.power = 3; // kW
+
+// Делегирующая связь Prototype
+FlatIron.prototype = new DeviceOnOff ();
+
+// Функция прибор FlatIron
+function FlatIron (name, color, power){
+    this.name = name;
+    this.color = color;
+    this.power = power;
+    this.voltage = 'Power Supply Voltage 240V AC';
 }
 
-function Lampe (){
-    this.name = 'Lampe - Yellow Light';
-    this.light = 'yellow';
-    this.power = 0.06; // kW
+// Собственныей метод
+FlatIron.prototype.powerSwitch = function (toggle){
+    if(toggle === 1) {
+        this.power = (this.power / 3).toFixed(2);
+    } 
+    else if (toggle === 2) {
+        this.power = (this.power / 2).toFixed(2); 
+    }
 }
 
-FlatIron.prototype = new ElectroDevice();
-Lampe.prototype = new ElectroDevice();
+// Делегирующая связь Prototype
+Laptop.prototype = new FlatIron ();
 
-const flatIron = new FlatIron();
-flatIron.deviceOn(2.5);
+// Функция прибор Laptop
+function Laptop (name, color, power, cpu){
+    this.name = name;
+    this.color = color;
+    this.power = power;
+    this.start = false;
+    this.cpu = `${cpu} MHz`;
+}
 
-const lampe = new Lampe();
-lampe.deviceOff(); */
+// Собственныей метод
+Laptop.prototype.laptopStart = function () {
+    if(this.start) {
+        console.log ('Laptop started')
+    }
+}
+
+// Экземпляры приборов.
+const flatIron = new FlatIron('Flat-Iron', 'Blue', 3000);
+const laptop = new Laptop ('Laptop', 'Green', 90, 2500)
+const lampe = new FlatIron('Lampe', 'Yellow', 60);
+
+
+flatIron.powerSwitch(1);
+flatIron.deviceOn(1);
+console.log(flatIron.voltage);
+
+console.log('----');
+
+laptop.deviceOn(1);
+laptop.laptopStart(); // laptop to Start
+console.log(laptop.voltage);
+
+console.log('----');
+
+lampe.powerSwitch(1);
+lampe.deviceOn(1);
+console.log(lampe.voltage);
+
+
 
 /*----------------------------------------------------------------------------------------*/
 
 // Implementation on Classes
 
-class DeviceOnOff {
+/* class DeviceOnOff {
     constructor (name, color) {
         this.name =  name
         this.color = color
@@ -82,8 +130,8 @@ console.log(iron.deviceOff());
 
 const lampe = new Device('Lampe', 'Yellow', 60);
 lampe.powerSwitch(2);
-console.log(lampe.deviceOn(5));
+console.log(lampe.deviceOn(1));
 
 const pc = new Computer  ('Dell', 'silber', 90, 2500);
-console.log(pc.deviceOn(5),pc.cpu)
+console.log(pc.deviceOn(5), pc.cpu) */
 
